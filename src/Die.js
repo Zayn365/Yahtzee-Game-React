@@ -11,11 +11,10 @@ class Die extends Component {
   }
 
   render() {
-    const classVal = `fas fa-dice-${this.props.numbVal[this.props.val - 1]} Die`
+    const classVal = `fas fa-dice-${this.props.numbVal[this.props.val - 1]} Die fa-5x `
     return (
       <i
         className={classVal}
-        style={{fontSize: "4em", color: 'white'}}
         onClick={this.handleClicker}
         disabled={this.props.locked}
       />
