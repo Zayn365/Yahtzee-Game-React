@@ -3,6 +3,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Image:
-![Yahtzee](yahtzee.png)
+![Yahtzee](yahtzee2.png)
 
 
