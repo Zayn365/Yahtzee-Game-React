@@ -3,7 +3,8 @@ import "./Die.css";
 
 class Die extends Component {
   static defaultProps = {
-    numbVal : ['one','two','three','four','five','six']
+    numbVal : ['one','two','three','four','five','six'],
+    val: 1
   }
 
   handleClicker = () => {
@@ -11,12 +12,14 @@ class Die extends Component {
   }
 
   render() {
-    const classVal = `fas fa-dice-${this.props.numbVal[this.props.val - 1]} Die fa-5x `
+    const {numbVal , locked , val, rolling} = this.props;
+    const classVal = `fas fa-dice-${numbVal[val - 1]} Die fa-5x ${locked ? 'Die-locked ' : ''} ${rolling ? 'Die-rolling' : ''}`
     return (
       <i
         className={classVal}
+        // style={{ backgroundColor: this.props.locked ? "gray" : "black" }}
         onClick={this.handleClicker}
-        disabled={this.props.locked}
+        disabled={locked}
       />
     );
   }
