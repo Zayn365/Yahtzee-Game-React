@@ -78,7 +78,18 @@ class Game extends Component {
       rollsLeft: NUM_ROLLS,
       locked: Array(NUM_DICE).fill(false)
     }));
-    this.roll();
+    this.animateRoll();
+  }
+
+  displayMsg = () => {
+      const messages = [
+        "0 Rolls Left!",
+        "1 Roll Left!",
+        "2 Rolls Left!",
+        "Starting Roll"
+      ]
+      return messages[this.state.rollsLeft];
+
   }
 
   render() {
@@ -97,10 +108,12 @@ class Game extends Component {
             <div className='Game-button-wrapper'>
               <button
                 className='Game-reroll'
-                disabled={this.state.locked.every(x => x) || this.state.locked === 0}
+                disabled={this.state.locked.every(x => x) || 
+                  this.state.locked === 0 ||
+                 this.state.rolling}
                 onClick={this.animateRoll}
               >
-                {this.state.rollsLeft} Rerolls Left
+                {this.displayMsg()}
               </button>
             </div>
           </section>
