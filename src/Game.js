@@ -46,6 +46,7 @@ class Game extends Component {
 
   toggleLocked = (idx) => {
     // toggle whether idx is in locked or not
+    if(this.state.rollsLeft > 0){
     this.setState(st => ({
       locked: [
         ...st.locked.slice(0, idx),
@@ -53,6 +54,7 @@ class Game extends Component {
         ...st.locked.slice(idx + 1)
       ]
     }));
+  }
   }
 
   doScore(rulename, ruleFn) {
@@ -70,7 +72,7 @@ class Game extends Component {
     return (
       <div className='Game'>
         <header className='Game-header'>
-          <h1 className='App-title'>Yahtzee! <i className="fas fa-dice-six" /></h1>
+          <h1 className='App-title'>Yahtzee!</h1>
           <section className='Game-dice-section'>
             <Dice
               dice={this.state.dice}
@@ -80,7 +82,7 @@ class Game extends Component {
             <div className='Game-button-wrapper'>
               <button
                 className='Game-reroll'
-                disabled={this.state.locked.every(x => x)}
+                disabled={this.state.locked.every(x => x) || this.state.locked === 0}
                 onClick={this.roll}
               >
                 {this.state.rollsLeft} Rerolls Left
